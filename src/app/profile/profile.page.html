@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  {{showUserData.fnames}}
+  {{showUserData.lname}}
+  {{showUserData.email}}
+  <div padding>
+    Do you want to create a store?<a routerLink="/create-store">Create my store</a>
+  </div>
+  <div padding>
+      <ion-button *ngIf="showUserData.fnames" (click)="service.logoutUser()" fill="outline">Logout</ion-button>
+      <ion-button *ngIf="user" (click)="logoutGoogle()" fill="outline">Logout</ion-button>
+    </div>
+</ion-content>

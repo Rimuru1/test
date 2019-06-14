@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+  <ion-tab-bar *ngIf="user">
+    <ion-chip>
+      <ion-label> {{ user?.displayName }}</ion-label>
+    </ion-chip>
+    <ion-button expand="block" (click)="logoutGoogle()">
+      <ion-icon name="log-out">
+      </ion-icon> Logout
+    </ion-button>
+  </ion-tab-bar>
+</ion-header>
+<ion-content>  
+    <ion-item>
+        <ion-label position="floating">SearchProduct</ion-label>
+        <ion-input  [(ngModel)]="product.productName" type="text"></ion-input>
+        <ion-button expand="block" (click)="searchproduct()">
+           Accept
+          </ion-button>
+      </ion-item> 
+</ion-content>
+
+<ion-content >
+    <ion-card  *ngFor="let item of allProduct; let i = index">
+        <ion-card-content>
+         {{ item.productName}}<br>
+         {{ item.type}}<br>
+         {{ item.price}}<br>
+         <img src="{{item.image}}" />
+        </ion-card-content>
+      </ion-card>
+</ion-content>
