@@ -13,6 +13,7 @@ export class ServiceService {
   private _registerUel = "http://localhost:3000/register";
   private _stroeUrl = "http://localhost:3000/stroe";
   private _productUrl ="http://localhost:3000/product";
+  private _loginStoreUrl = "http://localhost:3000/loginstore";
   constructor(
     private afAuth: AngularFireAuth,
     private http: HttpClient,
@@ -39,6 +40,9 @@ export class ServiceService {
   }
   registerUser(user){
     return this.http.post<any>(this._registerUel, user)
+  }
+  loginstore(store){
+    return this.http.post<any>(this._loginStoreUrl, store)
   }
   createStroe(stroe){
     return this.http.post<any>(this._stroeUrl, stroe)

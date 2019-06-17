@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'add-product', loadChildren: './add-product/add-product.module#AddProductPageModule' },
   { path: 'create-store', loadChildren: './create-store/create-store.module#CreateStorePageModule' },
   { path: 'auction', loadChildren: './auction/auction.module#AuctionPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'store', loadChildren: './store/store.module#StorePageModule' }
 ];
 @NgModule({
   imports: [

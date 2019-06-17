@@ -20,8 +20,8 @@
     <ion-input [(ngModel)]="productData.price" name="price" type="text" class="form-control"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Sector</ion-label>
-    <ion-input type="file" id="file" [id]="picture" name="image"class="form-control"></ion-input>
+    <ion-label position="floating">Image Url</ion-label>
+    <ion-input [(ngModel)]="productData.image" name="image"class="form-control"></ion-input>
   </ion-item>
   <ion-button  padding expand="block" (click)="addProduct()">Accept</ion-button>
 </ion-content>

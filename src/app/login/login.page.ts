@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   user: firebase.User;
   loginUserData = {}
+  storeData = {}
   constructor(
     private service: ServiceService,
     private router: Router,
@@ -48,6 +49,20 @@ export class LoginPage implements OnInit {
         localStorage.setItem("fnames", res.fnames)
         localStorage.setItem("lname", res.lname)
         localStorage.setItem("email", res.email)
+        this.router.navigate(['/tree'])
+      },
+      err => console.log(err)
+    )
+  }
+  loginStore() {
+    
+    this.service.loginstore(this.storeData).subscribe(
+      res => {
+        console.log(res)
+        localStorage.setItem("storeName", res.storeName)
+        localStorage.setItem("email", res.email)
+        localStorage.setItem("address", res.address)
+        localStorage.setItem("type", res.type)
         this.router.navigate(['/tree'])
       },
       err => console.log(err)

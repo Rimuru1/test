@@ -20,18 +20,16 @@
         <ion-label position="floating">SearchProduct</ion-label>
         <ion-input  [(ngModel)]="product.productName" type="text"></ion-input>
         <ion-button expand="block" (click)="searchproduct()">
-           Accept
+           ค้นหา
           </ion-button>
       </ion-item> 
+      <ion-card  *ngFor="let item of allProduct; let i = index">
+          <ion-card-content>
+           {{ item.productName}}<br>
+           {{ item.type}}<br>
+           {{ item.price}}<br>
+           <img  width="5%" height="5%" src="{{item.image}}" />
+          </ion-card-content>
+        </ion-card>
 </ion-content>
 
-<ion-content >
-    <ion-card  *ngFor="let item of allProduct; let i = index">
-        <ion-card-content>
-         {{ item.productName}}<br>
-         {{ item.type}}<br>
-         {{ item.price}}<br>
-         <img src="{{item.image}}" />
-        </ion-card-content>
-      </ion-card>
-</ion-content>

@@ -4,15 +4,53 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  {{showUserData.fnames}}
-  {{showUserData.lname}}
-  {{showUserData.email}}
-  <div padding>
-    Do you want to create a store?<a routerLink="/create-store">Create my store</a>
+<ion-content *ngIf="showUserData.fnames">
+  <div>
+    {{showUserData.fnames}}
+  </div>
+  <div>
+    {{showUserData.lname}}
+  </div>
+  <div>
+    {{showUserData.email}}
   </div>
   <div padding>
-      <ion-button *ngIf="showUserData.fnames" (click)="service.logoutUser()" fill="outline">Logout</ion-button>
-      <ion-button *ngIf="user" (click)="logoutGoogle()" fill="outline">Logout</ion-button>
+      <ion-button  (click)="service.logoutUser()" fill="outline">Logout</ion-button>
+     
     </div>
+
 </ion-content>
+<!-- <ion-content *ngIf="!showStoreData.type" >
+    <div>
+      {{showStoreData.storeName}}
+    </div>
+    <div>
+      {{showStoreData.email}}
+    </div>
+    <div>
+      {{showStoreData.address}}
+    </div>
+    <div padding>
+        <ion-button (click)="service.logoutUser()" fill="outline">Logout</ion-button>
+      </div>
+  </ion-content> -->
+
+  <ion-content *ngIf="showStoreData.type=== 'true'" >
+      <div>
+        {{showStoreData.storeName}}
+      </div>
+      <div>
+        {{showStoreData.email}}
+      </div>
+      <div>
+        {{showStoreData.address}}
+      </div>
+      <div padding>
+          <ion-button (click)="service.logoutUser()" fill="outline">Logout</ion-button>
+        </div>
+    </ion-content>
+
+  <ion-content *ngIf="user">
+      <ion-button  (click)="logoutGoogle()" fill="outline">Logout</ion-button>
+  </ion-content>
+  

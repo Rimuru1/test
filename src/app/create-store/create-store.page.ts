@@ -23,7 +23,7 @@ export class CreateStorePage implements OnInit {
         res => { 
         console.log(res)
         localStorage.getItem('token',)
-        this._router.navigateByUrl('/tree/profile')
+        this._router.navigateByUrl('/')
         },
         err => console.log(err)
       )

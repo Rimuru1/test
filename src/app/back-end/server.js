@@ -7,9 +7,10 @@ const FeedbackModel = require('./user');
 const User = require('./user')
 const cors = require('cors')
 const Product = require('./product')
-const Stroe = require('./stroe')
+const Store = require('./stroe')
 const SrcProduct = require('./search')
 const multer = require('./multer')
+
 
 
 const PORT = 3000
@@ -54,19 +55,12 @@ app.post('/api/photo',function(req,res){
 });
 // UpdetProduct
 app.put('/update/:id', (req, res) => {
-    product = Product.find({_id:req.body.id}, (err) =>{
-        if(err){
-
-
-        }else{
-
+    Product.findByIdAndUpdate({_id:req.body.id}, (err, product) =>{
         //console.log(Product)
             product.productName = req.body.productName;
             product.type = req.body.type;
             product.price = req.body.price;
             product.image = req.body.image;
-
-            res.json(product)
             product.save((err, product) =>{
         if(err){
             res.send('NOOOOOOOOOO!!!!');
@@ -74,7 +68,6 @@ app.put('/update/:id', (req, res) => {
         }
         res.json(product)
         })
-    }
     })
 })
     
@@ -136,15 +129,15 @@ app.post('/product', (req, res) => {
 });
 app.post('/stroe', (req, res) => {
 
-    let stroeData = req.body
-    let stroe = Stroe(stroeData)
-    stroe.save((error, createmarket) => {
+    let storeData = req.body
+    let store = Store(storeData)
+    store.save((error, createStoer) => {
         if (error) {
             console.log(error)
         } else {
-            let payload = { subject: createmarket._id }
+            let payload = { subject: createStoer._id }
             let token = jwt.sign(payload, 'secretkey')
-            res.status(200).json(stroeData)
+            res.status(200).json(storeData)
         }
     })
 
@@ -154,7 +147,7 @@ app.post('/stroe', (req, res) => {
 app.post('/login', (req, res) => {
     let userData = req.body
 
-    User.findOne({ email: userData.email }, (error, user) => {
+    User.findOne({ email: userData.email }, (error, user,) => {
         if (error) {
             console.log(error)
         } else {
@@ -171,5 +164,27 @@ app.post('/login', (req, res) => {
         }
     })
 })
+
+app.post('/loginstore', (req, res) => {
+    let storeData = req.body
+
+    Store.findOne({ email: storeData.email }, (error, stroe) => {
+        if (error) {
+            console.log(error)
+        } else {
+            if (!stroe) {
+                res.status(401).send('Invalid email')
+            } else
+                if (stroe.password !== storeData.password) {
+                    res.status(401).send('Invalid password')
+                } else {
+                    let payload = { subject: stroe._id }
+                    let token = jwt.sign(payload, 'secretkey')
+                    res.status(200).json(stroe)
+                }
+        }
+    })
+})
+
 
 module.exports = app

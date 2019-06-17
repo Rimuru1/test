@@ -21,7 +21,7 @@ export class AddProductPage implements OnInit {
         res => { 
         console.log(res)
         localStorage.getItem('token',)
-        this._router.navigateByUrl('/')
+        this._router.navigateByUrl('/store')
         },
         err => console.log(err)
       )
