@@ -49,6 +49,8 @@ export class LoginPage implements OnInit {
         localStorage.setItem("fnames", res.fnames)
         localStorage.setItem("lname", res.lname)
         localStorage.setItem("email", res.email)
+        localStorage.setItem("address",res.address)
+        localStorage.setItem("type", res.type)
         this.router.navigate(['/tree'])
       },
       err => console.log(err)

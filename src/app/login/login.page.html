@@ -3,7 +3,7 @@
     <ion-title>login</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!-- loginUserRegister -->
 <ion-content *ngIf="!user">
     <ion-item>
       <ion-label position="floating">Email</ion-label>
@@ -13,28 +13,14 @@
       <ion-label position="floating">Password</ion-label>
       <ion-input [(ngModel)]="loginUserData.password" type="password"></ion-input>
     </ion-item>
-  
     <div padding>
       <ion-button (click)="loginUser()" fill="outline">Login</ion-button>
-    </div>
-        <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input [(ngModel)]="storeData.email" type="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input [(ngModel)]="storeData.password" type="password"></ion-input>
-          </ion-item>
-        
-          <div padding>
-            <ion-button (click)="loginStore()" fill="outline">Login</ion-button>
           </div>
-          <div padding>
+      <div padding>
       Don't have an account?<a routerLink="/register">Sign Up</a>
     </div>
-    <div padding>
-      Do you want to create a store?<a routerLink="/create-store">Create store</a>
-    </div>
+
+    <!-- logingoogle&facebook -->
     <ion-button expand="block" fill="outline" (click)="loginFacebook()">
       <ion-icon name="logo-facebook">
       </ion-icon> Login with Facebook

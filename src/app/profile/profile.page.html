@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="showUserData.fnames">
+<ion-content *ngIf="showUserData.type === '1'">
   <div>
-    {{showUserData.fnames}}
+    {{showUserData.fnames}}adasdadsaadsasdada
   </div>
   <div>
     {{showUserData.lname}}
@@ -14,41 +14,34 @@
   <div>
     {{showUserData.email}}
   </div>
+  <div>
+    {{showUserData.address}}
+  </div>
   <div padding>
       <ion-button  (click)="service.logoutUser()" fill="outline">Logout</ion-button>
      
     </div>
-
 </ion-content>
-<!-- <ion-content *ngIf="!showStoreData.type" >
-    <div>
-      {{showStoreData.storeName}}
-    </div>
-    <div>
-      {{showStoreData.email}}
-    </div>
-    <div>
-      {{showStoreData.address}}
-    </div>
-    <div padding>
-        <ion-button (click)="service.logoutUser()" fill="outline">Logout</ion-button>
-      </div>
-  </ion-content> -->
 
-  <ion-content *ngIf="showStoreData.type=== 'true'" >
-      <div>
-        {{showStoreData.storeName}}
-      </div>
-      <div>
-        {{showStoreData.email}}
-      </div>
-      <div>
-        {{showStoreData.address}}
-      </div>
-      <div padding>
-          <ion-button (click)="service.logoutUser()" fill="outline">Logout</ion-button>
-        </div>
-    </ion-content>
+<ion-content *ngIf="showUserData.type === '2'">
+  <div>
+    {{showUserData.fnames}} 
+  </div>
+  <div>
+    {{showUserData.lname}}
+  </div>
+  <div>
+    {{showUserData.email}}
+  </div>
+  <div>
+    {{showUserData.address}}
+  </div>
+  <div padding>
+      <ion-button  (click)="service.logoutUser()" fill="outline">Logout</ion-button>
+     
+    </div>
+</ion-content>
+
 
   <ion-content *ngIf="user">
       <ion-button  (click)="logoutGoogle()" fill="outline">Logout</ion-button>

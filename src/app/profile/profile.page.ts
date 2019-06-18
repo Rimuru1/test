@@ -14,13 +14,11 @@ export class ProfilePage implements OnInit {
     "fnames": localStorage.getItem("fnames"),
     "lname": localStorage.getItem("lname"),
     "email": localStorage.getItem("email"),
-  }
-  showStoreData = {
-    "storeName": localStorage.getItem("storeName"),
-    "email": localStorage.getItem("email"),
     "address": localStorage.getItem("address"),
     "type": localStorage.getItem("type"),
+
   }
+  
 
 
   constructor(
