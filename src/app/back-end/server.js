@@ -93,6 +93,15 @@ app.get('/product',(req, res) => {
     })
 
 });
+app.get('/product/:email',(req, res) => {
+    Product.find({email:req.params.email} , (err,product) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(product);
+    })
+})
 
 app.post('/register', (req, res) => {
 

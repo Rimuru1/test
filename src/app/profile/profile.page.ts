@@ -45,5 +45,15 @@ export class ProfilePage implements OnInit {
   
         })
   }
+  searchMyProduct(email) {
+    console.log(email)
+    this.service.SearchMyproduct(email).subscribe(
+      res => { 
+        var data = JSON.stringify(res)
+        var jsonData = JSON.parse(data)
+        this.allProduct = jsonData
+  
+        })
+  }
 
 }
