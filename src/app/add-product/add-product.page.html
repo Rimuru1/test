@@ -9,19 +9,15 @@
 <ion-content>
   <ion-item>
     <ion-label position="floating">Product Name</ion-label>
-    <ion-input [(ngModel)]="productData.productName" name="productName" type="text" class="form-control"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Type</ion-label>
-    <ion-input [(ngModel)]="productData.type" name="type" type="text" class="form-control"></ion-input>
+    <ion-input [(ngModel)]="productName" name="productName" type="text" class="form-control"></ion-input>
   </ion-item>
 <ion-item>
     <ion-label position="floating">Price</ion-label>
-    <ion-input [(ngModel)]="productData.price" name="price" type="text" class="form-control"></ion-input>
+    <ion-input [(ngModel)]="price" name="price" type="text" class="form-control"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Image Url</ion-label>
-    <ion-input [(ngModel)]="productData.image" name="image"class="form-control"></ion-input>
+    <ion-input [(ngModel)]="image" name="image"class="form-control"></ion-input>
   </ion-item>
   <ion-button  padding expand="block" (click)="addProduct()">Accept</ion-button>
 </ion-content>

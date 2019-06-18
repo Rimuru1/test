@@ -1,32 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>เข้าสู่ระบบ</ion-title>
   </ion-toolbar>
 </ion-header>
 <!-- loginUserRegister -->
 <ion-content *ngIf="!user">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="floating">อีเมลล์</ion-label>
       <ion-input [(ngModel)]="loginUserData.email" type="email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">รหัสผ่าน</ion-label>
       <ion-input [(ngModel)]="loginUserData.password" type="password"></ion-input>
     </ion-item>
     <div padding>
-      <ion-button (click)="loginUser()" fill="outline">Login</ion-button>
+      <ion-button (click)="loginUser()" fill="outline">เข้าสู่ระบบ</ion-button>
           </div>
       <div padding>
-      Don't have an account?<a routerLink="/register">Sign Up</a>
+      ไม่มีบัญชีอีกแล้วเรอะ!!!<a routerLink="/register">กะไปลงทะเบียนแหม้</a>
     </div>
 
     <!-- logingoogle&facebook -->
     <ion-button expand="block" fill="outline" (click)="loginFacebook()">
       <ion-icon name="logo-facebook">
-      </ion-icon> Login with Facebook
+      </ion-icon> ลงชื่อเข้าใช้ด้วย Facebook
     </ion-button>
     <ion-button expand="block" fill="outline" (click)="loginGoogle()">
       <ion-icon name="logo-googleplus">
-      </ion-icon> Login With Google
+      </ion-icon> ลงชื่อเข้าใช้ด้วย Google
     </ion-button>
   </ion-content>

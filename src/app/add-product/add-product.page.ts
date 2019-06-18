@@ -8,7 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-product.page.scss'],
 })
 export class AddProductPage implements OnInit {
-  productData = {}
+ 
+  
+    email= localStorage.getItem("email")
+    type= localStorage.getItem("type")
+    productName: any
+    price: any 
+    imqge: any 
+
+  
 
   constructor(
     private product: ServiceService,
@@ -16,12 +24,20 @@ export class AddProductPage implements OnInit {
   ) { }
 
   addProduct() {
-    this.product.addProducts(this.productData)
+    const data = {
+      "email": this.email,
+      "type": this.type,
+      "productName": this.productName,
+      "price": this.price,
+      "image": this.imqge
+
+    }
+    this.product.addProducts(data)
       .subscribe(
         res => { 
         console.log(res)
         localStorage.getItem('token',)
-        this._router.navigateByUrl('/store')
+        this._router.navigateByUrl('/tree/profile')
         },
         err => console.log(err)
       )

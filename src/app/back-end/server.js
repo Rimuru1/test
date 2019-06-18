@@ -9,7 +9,6 @@ const cors = require('cors')
 const Product = require('./product')
 const Store = require('./stroe')
 const SrcProduct = require('./search')
-const multer = require('./multer')
 
 
 
@@ -85,7 +84,6 @@ app.delete('/delete/:id',(req, res) => {
     
 })
 app.get('/product',(req, res) => {
-    var query = {SrcProduct};
     Product.find({} , (err,product) => {
         if(err){
             res.send('somthing');

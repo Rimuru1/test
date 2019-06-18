@@ -10,6 +10,7 @@ import { Subscriber } from 'rxjs';
 })
 export class ProfilePage implements OnInit {
   user: firebase.User;
+  allProduct: any[] = []
   showUserData = {
     "fnames": localStorage.getItem("fnames"),
     "lname": localStorage.getItem("lname"),
@@ -18,9 +19,6 @@ export class ProfilePage implements OnInit {
     "type": localStorage.getItem("type"),
 
   }
-  
-
-
   constructor(
     private service: ServiceService,
     private router: Router
@@ -37,6 +35,15 @@ export class ProfilePage implements OnInit {
     console.log("logout...");
     this.service.logout();
     this.router.navigate(['/login'])
+  }
+  searchproduct() {
+    this.service.SearchProduct().subscribe(
+      res => { 
+        var data = JSON.stringify(res)
+        var jsonData = JSON.parse(data)
+        this.allProduct = jsonData
+  
+        })
   }
 
 }
