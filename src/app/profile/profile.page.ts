@@ -58,5 +58,12 @@ export class ProfilePage implements OnInit {
   
         })
   }
+  deleteproduct(id) {
+    console.log(id)
+    this.service.deleteProduct(id).subscribe(
+      res => { 
+        console.log(res)
+        })
+  }
 
 }

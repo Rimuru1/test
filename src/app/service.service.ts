@@ -75,7 +75,8 @@ SearchMyproduct(){
   getToken() {
     return localStorage.getItem('fname')
   }
-  deleteProduct(){
-    return this.http.get("http://localhost:3000/product/arkhane@gmail.com")
+  deleteProduct(id){
+    console.log(this._deleteProductUrl + id)
+    return this.http.delete(this._deleteProductUrl + id)
   }
 }

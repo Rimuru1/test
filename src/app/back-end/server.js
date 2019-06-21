@@ -65,17 +65,7 @@ app.put('/update/:id', (req, res) => {
     
 
 
-// deleteProduct
-app.delete('/delete/:id',(req, res) => {
-    Product.findById({_id:req.params.id}, (err, product) => {
-        if(err){
-            res.send('NOOOOOOOOOO!!!!');
-            next();
-        }
-        res.send('successfuly');
-    })
-    
-})
+
 app.get('/product',(req, res) => {
     Product.find({} , (err,product) => {
         if(err){
@@ -87,7 +77,7 @@ app.get('/product',(req, res) => {
 
 });
 app.get('/product/:email',(req, res) => {
-    console.log("hi")
+    console.log("hi12311")
     Product.find({email:req.params.email} , (err,product) => {
         if(err){
             res.send('somthing');
@@ -185,6 +175,18 @@ app.post('/loginstore', (req, res) => {
                 }
         }
     })
+})
+// deleteProduct
+app.delete('/delete/:id',(req, res) => {
+    console.log("1234....")
+    Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.send('successfuly');
+    })
+    
 })
 
 
