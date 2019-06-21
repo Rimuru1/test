@@ -54,13 +54,7 @@ app.post('/api/photo',function(req,res){
 });
 // UpdetProduct
 app.put('/update/:id', (req, res) => {
-    Product.findByIdAndUpdate({_id:req.body.id}, (err, product) =>{
-        //console.log(Product)
-            product.productName = req.body.productName;
-            product.type = req.body.type;
-            product.price = req.body.price;
-            product.image = req.body.image;
-            product.save((err, product) =>{
+    Product.findById({_id:req.params.id}, (err, product) =>{
         if(err){
             res.send('NOOOOOOOOOO!!!!');
             next();
@@ -68,13 +62,12 @@ app.put('/update/:id', (req, res) => {
         res.json(product)
         })
     })
-})
     
 
 
 // deleteProduct
 app.delete('/delete/:id',(req, res) => {
-    Product.findByIdAndRemove({_id:req.params.id}, (err, product) => {
+    Product.findById({_id:req.params.id}, (err, product) => {
         if(err){
             res.send('NOOOOOOOOOO!!!!');
             next();
@@ -94,6 +87,7 @@ app.get('/product',(req, res) => {
 
 });
 app.get('/product/:email',(req, res) => {
+    console.log("hi")
     Product.find({email:req.params.email} , (err,product) => {
         if(err){
             res.send('somthing');

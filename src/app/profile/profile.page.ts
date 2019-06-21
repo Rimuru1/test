@@ -19,6 +19,9 @@ export class ProfilePage implements OnInit {
     "type": localStorage.getItem("type"),
 
   }
+  showProductData = {
+    "_id":localStorage.getItem("_id")
+  }
   constructor(
     private service: ServiceService,
     private router: Router
@@ -45,9 +48,9 @@ export class ProfilePage implements OnInit {
   
         })
   }
-  searchMyProduct(email) {
-    console.log(email)
-    this.service.SearchMyproduct(email).subscribe(
+  searchMyProduct() {
+    console.log()
+    this.service.SearchMyproduct().subscribe(
       res => { 
         var data = JSON.stringify(res)
         var jsonData = JSON.parse(data)

@@ -9,14 +9,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ServiceService {
+  private getProductByemail = localStorage.getItem("email")
+  private delteProduct = localStorage.getItem("_id")
   private _loginUrl = "http://localhost:3000/login";
   private _registerUel = "http://localhost:3000/register";
   private _stroeUrl = "http://localhost:3000/stroe";
   private _productUrl ="http://localhost:3000/product";
   private _loginStoreUrl = "http://localhost:3000/loginstore";
-  private getProductByemail = localStorage.getItem("email")
   private _myProductUrl = "http://localhost:3000/product/"+this.getProductByemail;
-  private port = 'http://localhost:3000/product/';
+  private _deleteProductUrl = "http://localhost:3000/delete/";
+  
   // private _myProductUrl = this.port+this.getProductByemail;
 
   constructor(
@@ -60,10 +62,8 @@ export class ServiceService {
     
     return this.http.get<any>(this._productUrl)
 }
-SearchMyproduct(email){
-  console.log(email)
-  
-  return this.http.get(this._myProductUrl, email)
+SearchMyproduct(){
+  return this.http.get(this._myProductUrl)
 }
   logoutUser(){
     localStorage.clear()
@@ -74,5 +74,8 @@ SearchMyproduct(email){
   }
   getToken() {
     return localStorage.getItem('fname')
+  }
+  deleteProduct(){
+    return this.http.get("http://localhost:3000/product/arkhane@gmail.com")
   }
 }
