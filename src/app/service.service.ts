@@ -76,7 +76,7 @@ SearchMyproduct(){
     return localStorage.getItem('fname')
   }
   deleteProduct(id){
-    console.log(this._deleteProductUrl + id)
-    return this.http.delete(this._deleteProductUrl + id)
+    return this.http.delete(encodeURI(this._deleteProductUrl + id), {responseType: 'text'})
   }
+  
 }

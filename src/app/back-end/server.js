@@ -52,19 +52,6 @@ app.post('/api/photo',function(req,res){
         res.end("File is uploaded");
     });
 });
-// UpdetProduct
-app.put('/update/:id', (req, res) => {
-    Product.findById({_id:req.params.id}, (err, product) =>{
-        if(err){
-            res.send('NOOOOOOOOOO!!!!');
-            next();
-        }
-        res.json(product)
-        })
-    })
-    
-
-
 
 app.get('/product',(req, res) => {
     Product.find({} , (err,product) => {
@@ -86,6 +73,18 @@ app.get('/product/:email',(req, res) => {
         res.json(product);
     })
 })
+// UpdetProduct
+app.put('/update/:id', (req, res) => {
+    let ProductData = req.body
+    let update = Product(ProductData)
+    update.update({_id:req.params.id}, (err) =>{
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.json(update)
+        })
+    })
 
 app.post('/register', (req, res) => {
 

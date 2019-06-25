@@ -22,7 +22,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AppRoutingModule,
     AngularFireAuthModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+   
   ],
   providers: [
     StatusBar,
