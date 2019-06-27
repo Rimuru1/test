@@ -18,24 +18,24 @@
 <ion-content>  
     <ion-item>
         <ion-label position="floating">SearchProduct</ion-label>
-        <ion-input  [(ngModel)]="product.productName" type="text"></ion-input>
+        <ion-input type="text"></ion-input>
         <ion-button expand="block" (click)="searchproduct()">
            ค้นหา
           </ion-button>
       </ion-item> 
-      <ion-card  *ngFor="let item of allProduct; let i = index">
+      <ion-card *ngFor="let item of allProduct; let i = index">
           <ion-card-content>
            {{ item.productName}}<br>
            {{ item.price}}<br>
-           <img  width="5%" height="5%" src="{{item.image}}" />
-           <ion-button expand="block" (click)="GetMap()"></ion-button> 
-           <ion-button >
+           <img  width="5%" height="5%" src="{{item.image}}" /> 
+           <ion-button (click)="getUserStore(item.email)" routerLink="/store" >
+             <ion-icon name="pin"  ></ion-icon>
+           </ion-button>
+           <ion-button (click)="addBasket(item._id,item.productName,item.price)">
               <ion-icon name="cart"></ion-icon>
             </ion-button>
-           
           </ion-card-content>
         </ion-card>
 </ion-content>
-
-<div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+ 
 

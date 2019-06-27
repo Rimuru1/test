@@ -19,7 +19,7 @@ export class AddProductPage implements OnInit {
   
 
   constructor(
-    private product: ServiceService,
+    private service: ServiceService,
     private _router: Router
   ) { }
 
@@ -32,7 +32,7 @@ export class AddProductPage implements OnInit {
       "image": this.imqge
 
     }
-    this.product.addProducts(data)
+    this.service.addProducts(data)
       .subscribe(
         res => { 
         console.log(res)

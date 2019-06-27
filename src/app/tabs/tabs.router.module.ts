@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'basket',
+        children: [
+          {
+            path: '',
+            loadChildren: '../basket/basket.module#BasketPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tree/home',
         pathMatch: 'full'

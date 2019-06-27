@@ -1,6 +1,3 @@
-/// <reference types="@types/bingmaps" />
-
-
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
@@ -16,8 +13,7 @@ export class HomePage implements OnInit {
   user: firebase.User;
   loginUserData = {}
   allProduct: any[] = []
-  product = {}
-  
+  email = localStorage.getItem("email")
   
   constructor(
     private service: ServiceService,
@@ -43,9 +39,27 @@ searchproduct() {
       })
 }
 
-GetMap(){
-  var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-    credentials: 'AiGDmosZuT1LtMmTjkPoctTigaJw-O5TGgpXPEhH6mElZFyS31dhQo8UjPz5NEe7'
-  })
-}
+getUserStore(email){
+  var Uemail = email
+  console.log(Uemail)
+  localStorage.setItem("Uemail", Uemail)
+    
+  }
+  addBasket(_id ,productName, price){
+    const data = {
+      "id_product": _id,
+      "productName": productName,
+      "email": this.email,
+      "price": price
+
+    }
+    this.service.addProductsBasket(data)
+      .subscribe(
+        res => { 
+        console.log(res)
+        localStorage.getItem('token',)
+        },
+        err => console.log(err)
+      )
+  }
 }

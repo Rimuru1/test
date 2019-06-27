@@ -10,14 +10,17 @@ import { Router } from '@angular/router';
 })
 export class ServiceService {
   private getProductByemail = localStorage.getItem("email")
-  private delteProduct = localStorage.getItem("_id")
+  private Uemail = localStorage.getItem("Uemail")
   private _loginUrl = "http://localhost:3000/login";
   private _registerUel = "http://localhost:3000/register";
   private _stroeUrl = "http://localhost:3000/stroe";
   private _productUrl ="http://localhost:3000/product";
   private _loginStoreUrl = "http://localhost:3000/loginstore";
-  private _myProductUrl = "http://localhost:3000/product/"+this.getProductByemail;
-  private _deleteProductUrl = "http://localhost:3000/delete/";
+  private _myProductUrl = "http://localhost:3000/product/";
+  private _deleteProductUrl = "http://localhost:3000/delete/myProduct/";
+  private _deleteProducBaskettUrl = "http://localhost:3000/delete/productMybasket/";
+  private _userUrl = "http://localhost:3000/userstore/";
+  private _basketUrl = "http://localhost:3000/basket/";
   
   // private _myProductUrl = this.port+this.getProductByemail;
 
@@ -63,7 +66,7 @@ export class ServiceService {
     return this.http.get<any>(this._productUrl)
 }
 SearchMyproduct(){
-  return this.http.get(this._myProductUrl)
+  return this.http.get(this._myProductUrl+this.getProductByemail)
 }
   logoutUser(){
     localStorage.clear()
@@ -78,5 +81,24 @@ SearchMyproduct(){
   deleteProduct(id){
     return this.http.delete(encodeURI(this._deleteProductUrl + id), {responseType: 'text'})
   }
-  
+  deleteProductBasket(id){
+    return this.http.delete(encodeURI(this._deleteProducBaskettUrl + id), {responseType: 'text'})
+  }
+  getUserStore(){
+    console.log(this.Uemail+'1234')
+    return this.http.get(this._userUrl+this.Uemail)
+  }
+  SearchProductStore(){
+    return this.http.get(this._myProductUrl+this.Uemail)
+  }
+  clearUserStore(){
+    localStorage.removeItem('Uemail')
+  }
+  addProductsBasket(product){
+    return this.http.post<any>(this._basketUrl, product)
+  }
+  getProductBasket(){
+    return this.http.get(this._basketUrl + this.getProductByemail )
+  }
+
 }

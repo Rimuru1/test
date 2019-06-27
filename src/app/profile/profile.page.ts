@@ -63,6 +63,5 @@ export class ProfilePage implements OnInit {
       res => { 
         console.log(res)
         })
-  }
-
+      }
 }

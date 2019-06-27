@@ -44,6 +44,14 @@ Logout
     <ion-input [(ngModel)]="registerUserData.address" name="address" type="text" class="form-control"></ion-input>
   </ion-item>
   <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input [(ngModel)]="registerUserData.pin1" name="pin1" type="text" class="form-control"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input [(ngModel)]="registerUserData.pin2" name="pin2" type="text" class="form-control"></ion-input>
+      </ion-item>
+  <ion-item>
     <ion-label>ประเภทผู้ใช้</ion-label>
     <ion-select [(ngModel)]="registerUserData.type" placeholder="Select One">
       <ion-select-option value="1">ผู้ใช้ทั่วไป</ion-select-option>

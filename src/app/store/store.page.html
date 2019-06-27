@@ -1,6 +1,6 @@
 <ion-header>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/tree/profile"></ion-back-button>
+        <ion-back-button defaultHref="/tree/home"></ion-back-button>
       </ion-buttons>
   <ion-toolbar>
     <ion-title>store</ion-title>
@@ -8,5 +8,28 @@
 </ion-header>
 
 <ion-content>
+  <div *ngFor="let item of Emails">
+    {{item.fnames}}
+    {{item.lname}} 
+    {{item.pin1}}<br>
 
+
+    <ion-button (click)="GetMap(item.pin1,item.pin2)">
+      <ion-icon name="cart"></ion-icon>
+      LocationMapralitingininging
+    </ion-button>
+  </div>
+
+  <div  id="myMap" style="position:relative;width:400px;height:400px;"></div>
+  <!-- <ion-button (click)="userStore()"></ion-button> -->
+  <ion-card >
+  </ion-card>
+     <ion-card *ngFor="let item of allProduct; let i = index">
+        <ion-card-content>
+         {{ item.productName}}<br>
+         {{ item.price}}<br>
+         {{ item._id}}<br>
+         <img  width="5%" height="5%" src="{{item.image}}" />
+        </ion-card-content>
+      </ion-card>
 </ion-content>

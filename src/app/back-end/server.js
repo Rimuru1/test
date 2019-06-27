@@ -7,8 +7,8 @@ const FeedbackModel = require('./user');
 const User = require('./user')
 const cors = require('cors')
 const Product = require('./product')
-const Store = require('./stroe')
-const SrcProduct = require('./search')
+const Basket = require('./basket')
+
 
 
 
@@ -73,6 +73,16 @@ app.get('/product/:email',(req, res) => {
         res.json(product);
     })
 })
+app.get('/basket/:email',(req, res) => {
+    console.log("hi12311")
+    Basket.find({email:req.params.email} , (err,userData) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(userData);
+    })
+})
 // UpdetProduct
 app.put('/update/:id', (req, res) => {
     let ProductData = req.body
@@ -117,17 +127,17 @@ app.post('/product', (req, res) => {
     })
 
 });
-app.post('/stroe', (req, res) => {
+app.post('/basket', (req, res) => {
 
-    let storeData = req.body
-    let store = Store(storeData)
-    store.save((error, createStoer) => {
+    let basketData = req.body
+    let basket = Basket(basketData)
+    basket.save((error, createBasket) => {
         if (error) {
             console.log(error)
         } else {
-            let payload = { subject: createStoer._id }
+            let payload = { subject: createBasket._id }
             let token = jwt.sign(payload, 'secretkey')
-            res.status(200).json(storeData)
+            res.status(200).json(basketData)
         }
     })
 
@@ -154,29 +164,8 @@ app.post('/login', (req, res) => {
         }
     })
 })
-
-app.post('/loginstore', (req, res) => {
-    let storeData = req.body
-
-    Store.findOne({ email: storeData.email }, (error, stroe) => {
-        if (error) {
-            console.log(error)
-        } else {
-            if (!stroe) {
-                res.status(401).send('Invalid email')
-            } else
-                if (stroe.password !== storeData.password) {
-                    res.status(401).send('Invalid password')
-                } else {
-                    let payload = { subject: stroe._id }
-                    let token = jwt.sign(payload, 'secretkey')
-                    res.status(200).json(stroe)
-                }
-        }
-    })
-})
 // deleteProduct
-app.delete('/delete/:id',(req, res) => {
+app.delete('/delete/myProduct/:id',(req, res) => {
     console.log("1234....")
     Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
         if(err){
@@ -187,6 +176,31 @@ app.delete('/delete/:id',(req, res) => {
     })
     
 })
+app.delete('/delete/productMybasket/:id',(req, res) => {
+    console.log("1234....")
+    Basket.findOneAndRemove({_id:req.params.id}, (err, product) => {
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.send('successfuly');
+    })
+    
+})
+
+
+
+app.get('/userstore/:email',(req, res) => {
+    console.log("hi12311")
+    User.find({email:req.params.email} , (err,userData) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(userData);
+    })
+})
+
 
 
 module.exports = app

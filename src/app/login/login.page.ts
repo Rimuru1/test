@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     .subscribe(user =>{
       console.log(user);
       this.user = user;
-
+ 
       if (this.user != null) {
         this.router.navigateByUrl('/tree');
         }  
@@ -51,6 +51,8 @@ export class LoginPage implements OnInit {
         localStorage.setItem("email", res.email)
         localStorage.setItem("address",res.address)
         localStorage.setItem("type", res.type)
+        localStorage.setItem("pin1", res.pin1)
+        localStorage.setItem("pin2", res.pin2)
         this.router.navigate(['/tree'])
       },
       err => console.log(err)

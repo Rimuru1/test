@@ -1,10 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ข้อมูลผู้ใช้</ion-title>
+    <div>
+      <ion-title>ข้อมูลผู้ใช้</ion-title>
+    </div>
     <div padding>
-      <ion-button  *ngIf="showUserData.type === '1'"  (click)="service.logoutUser()" fill="outline">ออกจากระบบ</ion-button>
-      <ion-button  *ngIf="showUserData.type === '2'"  (click)="service.logoutUser()" fill="outline">ออกจากระบบ</ion-button>
-      <ion-button  *ngIf="user" (click)="logoutGoogle()" fill="outline">ออกจากระบบ</ion-button>
+      
+      <ion-icon *ngIf="user" (click)="logoutGoogle()" name="log-out"></ion-icon>
+
+      <ion-tab-button style="align-items: center" *ngIf="showUserData.type === '2'"  (click)="service.logoutUser()" >
+        <ion-icon name="log-out"></ion-icon>
+      </ion-tab-button>
+      <ion-icon *ngIf="showUserData.type === '1'"  (click)="service.logoutUser()"name="log-out"></ion-icon>
+
+
+
      
     </div>
   </ion-toolbar>
@@ -56,7 +65,5 @@
          </ion-button>
         </ion-card-content>
       </ion-card>
- 
- 
 </ion-content>
 
